@@ -7,37 +7,19 @@ export default function MyComponent() {
   const [list, setList] = useState(arr);
 
   const Item = ({ children, index }) => {
-    const handlePrevSwap = () => {
-      if (index - 1 === -1) return;
+    const handleSwap = j => {
       const newList = [...list];
-
-      // Swap with previous
-      [newList[index], newList[index - 1]] = [
-        newList[index - 1],
-        newList[index],
-      ];
-      setList(newList);
-    };
-
-    const handleNextSwap = () => {
-      if (index + 1 === list.length) return;
-      const newList = [...list];
-
-      // Swap with next
-      [newList[index], newList[index + 1]] = [
-        newList[index + 1],
-        newList[index],
-      ];
+      [newList[index], newList[j]] = [newList[j], newList[index]];
       setList(newList);
     };
 
     return (
       <div>
-        <button onClick={handlePrevSwap}>
+        <button onClick={() => handleSwap(index - 1)}>
           <ArrowLeftIcon />
         </button>
         {children}
-        <button onClick={handleNextSwap}>
+        <button onClick={() => handleSwap(index + 1)}>
           <ArrowRightIcon />
         </button>
       </div>
