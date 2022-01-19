@@ -10,24 +10,27 @@ export default function MyComponent() {
     const handlePrevSwap = () => {
       if (index - 1 === -1) return;
       const newList = [...list];
+
+      // Swap with previous
       [newList[index], newList[index - 1]] = [
         newList[index - 1],
         newList[index],
       ];
-      console.log(`newList: `, newList);
       setList(newList);
     };
 
     const handleNextSwap = () => {
       if (index + 1 === list.length) return;
       const newList = [...list];
+
+      // Swap with next
       [newList[index], newList[index + 1]] = [
         newList[index + 1],
         newList[index],
       ];
-      console.log(`newList: `, newList);
       setList(newList);
     };
+
     return (
       <div>
         <button onClick={handlePrevSwap}>
